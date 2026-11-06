@@ -1,0 +1,89 @@
+:root{--bg:#f3f1ed;--surface:#e7e3da;--sand:#c8b894;--ink:#2e2e2c;--muted:#6f6d67;--line:#d6d1c5;--max:1080px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+h1,h2,h3,.logo{font-family:Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:.01em}
+h1{font-size:2.2rem;margin:0 0 1.5rem}
+h2{font-size:1.4rem;margin:0 0 .4rem}
+a{color:inherit}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 1.5rem}
+header{border-bottom:1px solid var(--line);background:var(--bg)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;min-height:72px;flex-wrap:wrap}
+.logo{font-size:1.5rem;text-decoration:none}
+nav ul{list-style:none;margin:0;padding:0;display:flex;gap:2rem;align-items:center}
+nav a,nav button{font:inherit;color:var(--muted);background:none;border:0;padding:.5rem 0;cursor:pointer;text-decoration:none}
+nav a:hover,nav button:hover,nav a[aria-current]{color:var(--ink)}
+nav a[aria-current]{border-bottom:2px solid var(--sand)}
+.has-sub{position:relative}
+.sub{display:none;position:absolute;top:100%;left:-1rem;min-width:170px;background:var(--bg);border:1px solid var(--line);padding:.5rem 1rem;flex-direction:column;gap:0;z-index:5}
+.has-sub:hover .sub,.has-sub:focus-within .sub,.has-sub.open .sub{display:flex}
+.menu-btn{display:none}
+main{padding:3rem 0 4rem;min-height:60vh}
+.slider{position:relative;aspect-ratio:16/9;background:var(--surface);overflow:hidden}
+.slider img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
+.slider img.active{opacity:1}
+.intro{max-width:36rem;margin:2.5rem 0 0;color:var(--muted)}
+h1.intro{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:1.05rem;font-weight:400;letter-spacing:0;line-height:1.65}
+.text{max-width:38rem}
+
+/* Kártyarács: könyvek, játékok, festmények */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2.75rem 1.75rem}
+.grid.art{gap:1.5rem}
+.item{display:flex;flex-direction:column}
+.item img{display:block;width:100%;height:auto;object-fit:contain;background:var(--surface);margin:0 0 1.1rem}
+.books .item img{aspect-ratio:2/3}
+.games .item img{aspect-ratio:4/3}
+.art .item img{aspect-ratio:1/1;padding:.6rem;margin:0}
+.item h2{font-size:1.15rem;line-height:1.3;min-height:2.6em;margin:0 0 .6rem}
+.item p{margin:0 0 .8rem}
+.item .desc{color:var(--muted);font-size:.95rem;line-height:1.55}
+.item .cat{margin:auto 0 1rem;padding-top:.4rem;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}
+.btns{display:flex;flex-direction:column;gap:.6rem}
+.btn{display:block;text-align:center;padding:.55rem 1.4rem;background:var(--sand);color:var(--ink);text-decoration:none;border:1px solid var(--sand);transition:background .2s}
+.btn:hover{background:var(--surface)}
+.btn.alt{background:transparent}
+.btn.alt:hover{background:var(--surface)}
+
+/* Blog */
+.post{max-width:38rem;margin:0 0 2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--line)}
+.post time{display:block;color:var(--muted);font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem}
+
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem 1.5rem}
+footer a{color:inherit}
+.legal h2{font-size:1.15rem;margin:2rem 0 .5rem}
+.legal p{margin:0 0 1rem}
+footer a:hover{color:var(--ink)}
+.legal-links{display:flex;flex-wrap:wrap;justify-content:space-evenly;gap:.5rem 1.5rem;padding-top:1rem;padding-bottom:1.5rem;color:var(--muted);font-size:.9rem}
+.legal-links a:hover{color:var(--ink)}
+footer{border-top:1px solid var(--line);padding:1.5rem 0;color:var(--muted);font-size:.9rem}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){
+.menu-btn{display:block;border:1px solid var(--line);padding:.4rem 1rem}
+nav{width:100%;display:none}
+nav.open{display:block}
+nav ul{flex-direction:column;align-items:flex-start;gap:.2rem;padding-bottom:1rem}
+.sub{position:static;border:0;padding:0 0 0 1rem}
+.has-sub .sub{display:flex}
+}
+@media(max-width:520px){.books,.games{grid-template-columns:1fr}.item h2{min-height:0}}
+@media(prefers-reduced-motion:reduce){.slider img{transition:none}html{scroll-behavior:auto}}
+
+/* Nagyító */
+.art .item a.lb{display:block;cursor:zoom-in}
+.art .item a.lb img{transition:opacity .2s}
+.art .item a.lb:hover img{opacity:.85}
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(36,36,34,.95);display:flex;align-items:center;justify-content:center}
+.lightbox[hidden]{display:none}
+.lightbox figure{margin:0;max-width:90vw;text-align:center}
+.lightbox img{max-width:90vw;max-height:80vh;width:auto;height:auto;margin:0 auto;object-fit:contain}
+.lightbox figcaption{color:#cfc9bb;margin-top:.8rem;font-size:.85rem;letter-spacing:.08em}
+.lightbox button{position:absolute;background:none;border:0;color:#e7e3da;cursor:pointer;font-family:Georgia,"Times New Roman",serif;line-height:1;padding:.5rem 1rem}
+.lightbox button:hover{color:var(--sand)}
+.lightbox button:focus-visible{outline-color:#e7e3da}
+.lb-close{top:1rem;right:1rem;font-size:2.6rem}
+.lb-prev,.lb-next{top:50%;transform:translateY(-50%);font-size:4rem}
+.lb-prev{left:.5rem}
+.lb-next{right:.5rem}
+@media(max-width:700px){.lb-prev,.lb-next{font-size:3rem;padding:.5rem .6rem}}
