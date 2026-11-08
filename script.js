@@ -35,7 +35,8 @@
       i=(n+links.length)%links.length;
       big.src=links[i].href;
       big.alt=links[i].querySelector('img').alt;
-      cap.textContent=(i+1)+' / '+links.length;
+      var t=links[i].getAttribute('data-caption');
+      cap.textContent=(t?t+'  ·  ':'')+(i+1)+' / '+links.length;
       new Image().src=links[(i+1)%links.length].href;
     }
     function open(n){
